@@ -1,14 +1,12 @@
 import { authMiddleware } from "@clerk/nextjs/server";
 
 export default authMiddleware({
-  publicRoutes: ["/"],
+  publicRoutes: ["/", "/api/webhooks/stripe"],
 });
 
 export const config = {
   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };
-
-// import { authMiddleware } from "@clerk/nextjs";
 
 // export default authMiddleware({
 //   // Routes that can be accessed while signed out
