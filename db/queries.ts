@@ -251,7 +251,7 @@ export const getTopTenUsers = cache(async () => {
   }
 
   const data = await db.query.userProgress.findMany({
-    orderBy: (getUserProgress, { desc }) => [desc(userProgress.points)],
+    orderBy: (userProgress, { desc }) => [desc(userProgress.points)],
     limit: 10,
     columns: {
       userId: true,
