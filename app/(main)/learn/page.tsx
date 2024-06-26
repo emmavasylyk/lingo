@@ -73,10 +73,17 @@ const LearnPage = async () => {
               activeLesson={
                 courseProgress.activeLesson as
                   | (typeof lessons.$inferSelect & {
-                      unit: typeof unitsSchema.$inferSelect;
+                      units: typeof unitsSchema.$inferSelect;
                     })
                   | undefined
               }
+              // activeLesson={
+              //   courseProgress.activeLesson as
+              //     | (typeof lessons.$inferSelect & {
+              //         unit: typeof unitsSchema.$inferSelect;
+              //       })
+              //     | undefined
+              // }
               activeLessonPercentage={lessonPercentage}
             />
           </div>

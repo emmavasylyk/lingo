@@ -43,7 +43,7 @@ export const Footer = () => {
             alt="Italian"
             className="mr-4 rounded-md"
           />
-          Italian"
+          Italian
         </Button>
         <Button size="lg" variant="ghost" className="w-full">
           <Image
@@ -53,7 +53,7 @@ export const Footer = () => {
             alt="Japanese"
             className="mr-4 rounded-md"
           />
-          Japanese"
+          Japanese
         </Button>
       </div>
     </footer>

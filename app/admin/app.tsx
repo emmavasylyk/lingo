@@ -23,11 +23,18 @@ import { ChallengeOptionList } from "./challengeOption/list";
 import { ChallengeOptionEdit } from "./challengeOption/edit";
 import { ChallengeOptionCreate } from "./challengeOption/create";
 
-const dataProvider = simpleRestProvider("/api");
+// const dataProvider = simpleRestProvider("/api");
+const myDataProvider = {
+  ...simpleRestProvider("/api"),
+  getList: (resource: string, params: any) => {
+    // адаптация или обертка функции getList
+    return simpleRestProvider("/api").getList(resource, params);
+  },
+};
 
 const App = () => {
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={myDataProvider}>
       <Resource
         name="courses"
         list={CourseList}
