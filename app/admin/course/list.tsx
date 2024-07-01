@@ -1,8 +1,24 @@
-import { Datagrid, List, TextField } from "react-admin";
+import {
+  Datagrid,
+  Filter,
+  List,
+  Pagination,
+  TextField,
+  TextInput,
+} from "react-admin";
 
+const CourseFilter = (props: any) => (
+  <Filter {...props}>
+    <TextInput label="Поиск по title" source="title" alwaysOn />
+  </Filter>
+);
+
+const CoursePagination = (props: any) => (
+  <Pagination rowsPerPageOptions={[10, 25, 50]} {...props} />
+);
 export const CourseList = () => {
   return (
-    <List>
+    <List filters={<CourseFilter />} pagination={<CoursePagination />}>
       <Datagrid rowClick="edit">
         <TextField source="id" />
         <TextField source="title" />

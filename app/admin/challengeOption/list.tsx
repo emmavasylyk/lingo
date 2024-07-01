@@ -5,11 +5,27 @@ import {
   ReferenceField,
   TextField,
   BooleanField,
+  Filter,
+  TextInput,
+  Pagination,
 } from "react-admin";
+
+const ChallengeOptionFilter = (props: any) => (
+  <Filter {...props}>
+    <TextInput label="Поиск по тексту" source="text" alwaysOn />
+  </Filter>
+);
+
+const ChallengeOptionPagination = (props: any) => (
+  <Pagination rowsPerPageOptions={[10, 25, 50]} {...props} />
+);
 
 export const ChallengeOptionList = () => {
   return (
-    <List>
+    <List
+      filters={<ChallengeOptionFilter />}
+      pagination={<ChallengeOptionPagination />}
+    >
       <Datagrid rowClick="edit">
         <NumberField source="id" />
         <TextField source="text" />

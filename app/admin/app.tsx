@@ -23,12 +23,45 @@ import { ChallengeOptionList } from "./challengeOption/list";
 import { ChallengeOptionEdit } from "./challengeOption/edit";
 import { ChallengeOptionCreate } from "./challengeOption/create";
 
-// const dataProvider = simpleRestProvider("/api");
 const myDataProvider = {
   ...simpleRestProvider("/api"),
-  getList: (resource: string, params: any) => {
-    // адаптация или обертка функции getList
-    return simpleRestProvider("/api").getList(resource, params);
+  getList: async (resource: string, params: any) => {
+    const {
+      page = params.pagination.page,
+      perPage = params.pagination.perPage,
+      filter,
+      sort,
+    } = params;
+
+    const url = new URL(`/api/${resource}`, window.location.origin);
+
+    if (filter) {
+      Object.keys(filter).forEach((key) =>
+        url.searchParams.append(key, filter[key])
+      );
+    }
+
+    url.searchParams.append("_page", page.toString());
+    url.searchParams.append("_limit", perPage.toString());
+
+    if (sort) {
+      url.searchParams.append("_sort", sort.field);
+      url.searchParams.append("_order", sort.order);
+    }
+
+    const response = await fetch(url.toString());
+    const data = await response.json();
+
+    const totalCount = response.headers.get("X-Total-Count");
+
+    if (!totalCount) {
+      throw new Error("X-Total-Count header is missing");
+    }
+
+    return {
+      data: data,
+      total: parseInt(totalCount, 10),
+    };
   },
 };
 
