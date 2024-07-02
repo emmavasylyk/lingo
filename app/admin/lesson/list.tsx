@@ -11,7 +11,7 @@ import {
 
 const LessonFilter = (props: any) => (
   <Filter {...props}>
-    <TextInput label="Поиск по title" source="title" alwaysOn />
+    <TextInput label="Search by title" source="title" alwaysOn />
   </Filter>
 );
 

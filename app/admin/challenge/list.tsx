@@ -12,7 +12,7 @@ import {
 
 const ChallengeFilter = (props: any) => (
   <Filter {...props}>
-    <TextInput label="Поиск по тексту" source="question" alwaysOn />
+    <TextInput label="Search by text" source="question" alwaysOn />
   </Filter>
 );
 

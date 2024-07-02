@@ -12,7 +12,7 @@ import {
 
 const ChallengeOptionFilter = (props: any) => (
   <Filter {...props}>
-    <TextInput label="Поиск по тексту" source="text" alwaysOn />
+    <TextInput label="Search by text" source="text" alwaysOn />
   </Filter>
 );
 
@@ -31,6 +31,7 @@ export const ChallengeOptionList = () => {
         <TextField source="text" />
         <BooleanField source="correct" />
         <ReferenceField source="challengeId" reference="challenges" />
+
         <TextField source="imageSrc" />
         <TextField source="audioSrc" />
       </Datagrid>
